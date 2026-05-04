@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 
+
 # parse for a cdp package to find on which remote Cisco switch and port its connected 
 from scapy.all import *
 import argparse
@@ -10,7 +11,7 @@ def cdp_monitor_callback(pkt):
     ip = "0.0.0.0"
     if (CDPMsgDeviceID in pkt):
       device=pkt["CDPMsgDeviceID"].val.decode()
-      hostname=device.split(".")[0]
+      #hostname=device.split(".")[0]
       if (CDPMsgPortID in pkt):
         port = pkt["CDPMsgPortID"].iface.decode()
       if (CDPMsgDeviceID in pkt):
@@ -19,6 +20,7 @@ def cdp_monitor_callback(pkt):
         vlan = pkt["CDPMsgNativeVLAN"].vlan
       if (CDPAddrRecordIPv4 in pkt):
         ip=pkt["CDPAddrRecordIPv4"].addr
+      print( list(iter(pkt)) )
       return f"Device: {switchname} Port: {port} VLAN: {vlan} IP: {ip}"
   
 interface="enp1s0"

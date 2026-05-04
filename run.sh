@@ -1,0 +1,1 @@
+./venv/bin/python3 discover-switchport.py -i eno1
