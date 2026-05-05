@@ -1,1 +1,1 @@
-./venv/bin/python3 discover-switchport.py -i eno1
+./venv/bin/python3 switchport-scanner.py -i eno1
